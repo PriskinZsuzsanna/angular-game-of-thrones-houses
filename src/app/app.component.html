@@ -1,26 +1,29 @@
 <div class="container">
   <header>
     <h1>Game of Thrones: <span>The Houses</span></h1>
-    
+
   </header>
-  
+
   <div class="buttons">
-    <app-button
-    *ngFor="let house of data"
-    [houseName]=house.name
-    (choosenHouseName)="selectedHouseName = house.name"
-    (choosenHouse)="selectedHouse = house"
-    (getHouse)="(getHouse())"
-    >
+    <app-button *ngFor="let house of data" [houseName]=house.name (choosenHouse)="selectedHouse = house"
+      (getHouse)="(getHouse())">
     </app-button>
   </div>
 
-  <div *ngIf="selectedHouseName" class="house-details">
-    <p *ngIf="selectedHouseName">House: {{selectedHouseName}}</p>
-    <p *ngIf="region">Region: {{region}}</p>
-    <p *ngIf="coatOfArms">Coat of Arms: {{coatOfArms}}</p>
-    <p *ngIf="words">Words: {{words}}</p>
-   
+  <div *ngIf="!selected" class="img-div" [class.fade-away]="fadeAway">
+    <img src="assets/images.jpg" alt="">
   </div>
+
+
+  <div *ngIf="selected" class="house-details" [class.fade-away]="fadeAway">
+    <p *ngIf="houseName" class="detail">House: <span>{{houseName}}</span></p>
+    <p *ngIf="region">Region: <span>{{region}}</span></p>
+    <p *ngIf="coatOfArms">Coat of Arms: <span>{{coatOfArms}}</span></p>
+    <p *ngIf="words">Words: <span>{{words}}</span></p>
+
+  </div>
+
+
+  <!--p>(choosenHouseName)="selectedHouseName = house.name"</p-->
 
 </div>

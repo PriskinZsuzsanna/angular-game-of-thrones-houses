@@ -8,13 +8,17 @@ import {HttpClient} from '@angular/common/http'
 })
 export class AppComponent {
   title = 'angular-game-of-thrones-houses';
+
   data : any;
+
   selectedHouse:any;
-  
-  selectedHouseName:string = ""
+  houseName = ""
   region = ""
   coatOfArms = ""
   words = ""
+
+  selected: boolean = false
+  fadeAway: boolean = false
 
   constructor(private _http: HttpClient){
     
@@ -25,14 +29,26 @@ export class AppComponent {
   }
 
   fetchData(){
-    return this._http.get('https://www.anapioficeandfire.com/api/houses')
+    return this._http.get('https://www.anapioficeandfire.com/api/houses/')
   }
 
 
   getHouse(){
-    console.log(this.selectedHouse)
-    this.region = this.selectedHouse.region
-    this.coatOfArms = this.selectedHouse.coatOfArms
-    this.words = this.selectedHouse.words
+    this.fadeAway = true
+    setTimeout(()=> {
+      this.houseName = ""
+      this.region = ""
+      this.coatOfArms = ""
+      this.words = ""
+    },900)
+    setTimeout(()=> {
+      this.selected = false
+      this.fadeAway = false
+      this.selected = true
+      this.houseName = this.selectedHouse.name
+      this.region = this.selectedHouse.region
+      this.coatOfArms = this.selectedHouse.coatOfArms
+      this.words = this.selectedHouse.words
+    }, 1000)
   }
 }

@@ -1,4 +1,9 @@
 <div class="container">
+  <div class="light-dark">
+    <fa-icon (click)="toggleTheme()" *ngIf="!light" [icon]="faSun"></fa-icon>
+    <fa-icon (click)="toggleTheme()" *ngIf="light" [icon]="faMoon"></fa-icon>
+  </div>
+  
   <header>
     <h1>Game of Thrones: <span>The Houses</span></h1>
 
@@ -10,17 +15,20 @@
     </app-button>
   </div>
 
-  <div *ngIf="!selected" class="img-div" [class.fade-away]="fadeAway">
-    <img src="assets/images.jpg" alt="">
-  </div>
+  
+  <div class="result">
 
+    <div *ngIf="!selected" class="img-div" [class.fade-away]="fadeAway">
+      <img src="assets/images.jpg" alt="">
+    </div>
 
-  <div *ngIf="selected" class="house-details" [class.fade-away]="fadeAway">
-    <p *ngIf="houseName" class="detail">House: <span>{{houseName}}</span></p>
-    <p *ngIf="region">Region: <span>{{region}}</span></p>
-    <p *ngIf="coatOfArms">Coat of Arms: <span>{{coatOfArms}}</span></p>
-    <p *ngIf="words">Words: <span>{{words}}</span></p>
+    <div *ngIf="selected" class="house-details" [class.fade-away]="fadeAway">
+      <p *ngIf="houseName" class="detail"><fa-icon [icon]="faDungeon"></fa-icon>House: <span>{{houseName}}</span></p>
+      <p *ngIf="region"><fa-icon [icon]="faMountainSun"></fa-icon>Region: <span>{{region}}</span></p>
+      <p *ngIf="coatOfArms"><fa-icon [icon]="faShield"></fa-icon> Coat of Arms: <span>{{coatOfArms}}</span></p>
+      <p *ngIf="words"><fa-icon [icon]="faQuoteRight"></fa-icon> Words: <span>{{words}}</span><fa-icon [icon]="faQuoteRight"></fa-icon></p>
 
+    </div>
   </div>
 
 

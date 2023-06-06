@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 1rem;
 }
 
 app-root {
@@ -19,6 +20,15 @@ app-root {
     min-height: 100vh;
     background: #000;
     color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease-in-out;
+}
+
+body.light app-root{
+    background:linear-gradient(110deg, #93f6fb69, #587cde62,#23d3d928);
+    color: #587cde;
 }
 
 .container {
@@ -29,11 +39,33 @@ app-root {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    padding-block: 3rem;
+    border-radius: 2rem;
+    padding-inline: 3rem;
+    position: relative;
 }
+
+body.light .container {
+    background: #ffffff4a;
+    backdrop-filter: blur(20px);
+    transition: all .3s ease-in-out;
+}
+
+.light-dark {
+    position: absolute;
+    top: 3.5%;
+    right: 5%;
+    cursor: pointer;
+}
+
+.light-dark fa-icon {
+    font-size: 1.2em;
+}
+
 
 header {
     text-align: center;
-    padding-block: 3rem;
+    padding-bottom: 3rem;
 }
 
 .buttons {
@@ -55,9 +87,27 @@ button {
     transition: all .3s ease-in-out;
 }
 
+body.light button {
+    color: #587cde;;
+    border-color: #587cde;;
+}
+
 button:hover {
     color: red;
     border-color: red;
+}
+
+body.light button:hover {
+    color: #23d3d9;
+    border-color: #23d3d9;
+}
+
+.result {
+    min-height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .house-details {
@@ -65,10 +115,14 @@ button:hover {
     max-width: 600px;
     padding: 2rem;
     border: 1px solid #fff;
-    margin-bottom: 2rem;
     position: relative;
     transition: all .3s ease-in-out;
     animation: fadeInAfter 1s;
+    
+}
+
+body.light .house-details {
+    border: 1px solid #587cde;;
 }
 
 .house-details::after {
@@ -82,10 +136,13 @@ button:hover {
     border: 1px solid #fff;
     transition: all .8s ease-in-out;
 }
+body.light .house-details::after {
+    border: 1px solid #587cde;
+}
 
 p {
     padding-bottom: .6rem;
-    line-height: 1.6rem;
+    line-height: 2rem;
     transition: all .3s ease-in-out;
     animation: fadeInfromSide 1s;
 }
@@ -95,10 +152,14 @@ p:not(.detail) {
 }
 
 .detail {
-    width: 80%;
+    width: 85%;
     margin-bottom: 1rem;
     border-bottom: 1px solid red;
     transition: all .3s ease-in-out;
+}
+
+body.light .detail {
+    border-bottom:  1px solid #23d3d9;
 }
 
 span {
@@ -107,24 +168,50 @@ span {
     animation: fadeInfromSide 1s;
 }
 
+body.light span {
+    color: #23d3d9;
+}
+
 .house-details:hover p {
     color: red;
+}
+
+body.light .house-details:hover p {
+    color: #23d3d9;
 }
 
 .house-details:hover span {
     color: #fff;
 }
 
+body.light .house-details:hover span {
+    color: #23d3d9;
+}
+
+body.light .house-details:hover span {
+   color: #587cde;;
+}
+
 .house-details:hover .detail {
     border-bottom: 1px solid #fff;
+}
+
+body.light .house-details:hover .detail {
+    border-bottom: 1px solid #587cde;;
 }
 
 .house-details:hover {
     border-color: red;
 }
+body.light .house-details:hover {
+    color: #23d3d9;
+}
 
 .house-details:hover::after {
     border-color: red;
+}
+body.light .house-details:hover::after {
+    border-color:#23d3d9;
 }
 
 .img-div {
@@ -136,6 +223,10 @@ span {
 
 img {
     max-width: 100%;
+}
+
+fa-icon {
+    margin-inline: .8rem;
 }
 
 .fade-away {
@@ -173,6 +264,19 @@ img {
 
 
 @media screen and (min-width: 660px) {
+    body {
+        font-size: 1.3rem;
+    }
+
+    .container {
+        padding-block: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
     .buttons {
         display: flex;
         flex-wrap: wrap;
@@ -184,6 +288,7 @@ img {
     button {
         width: auto;
         padding: .8rem 3rem;
+        font-size: 1.1rem;
     }
 
     .house-details::after {
@@ -191,5 +296,15 @@ img {
         right: -50px;
         width: 100px;
         height: 100px;
+    }
+}
+
+@media screen and (min-width: 900px){
+    body {
+        font-size: 1.5rem;
+    }
+
+    button {
+        font-size: 1.3rem;
     }
 }
